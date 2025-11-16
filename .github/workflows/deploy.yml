@@ -22,3 +22,4 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: public_html/ # IMPORTANTE: Verifique e ajuste este caminho para o diretório raiz do seu site na Hostinger.
+          dangerous-clean-slate: true
