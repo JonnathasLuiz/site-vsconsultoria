@@ -1,0 +1,24 @@
+# Nome do Workflow
+name: Deploy to Hostinger
+
+# Evento que aciona o workflow
+on:
+  push:
+    branches:
+      - main # Altere para 'master' ou sua branch principal, se for diferente
+
+jobs:
+  deploy:
+    name: Deploy to FTP
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: public_html/ # IMPORTANTE: Verifique e ajuste este caminho para o diretório raiz do seu site na Hostinger.
